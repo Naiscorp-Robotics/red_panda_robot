@@ -1,0 +1,451 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-4-g7f85cfe  Build Version: 1.6.7995.38578
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="redpanda_base">
+
+  <!-- ========================================== -->
+  <!-- BASE LINK - Main robot body -->
+  <!-- ========================================== -->
+  <link name="base_link"/>
+  <link name="chassis_link">
+    <inertial>
+      <origin
+        xyz="0.0035323 -0.00058335 0.12517"
+        rpy="0 0 0" />
+      <mass
+        value="5" />
+      <inertia
+        ixx="0.021131"
+        ixy="-2.2073E-06"
+        ixz="0.00032516"
+        iyy="0.017413"
+        iyz="1.1682E-06"
+        izz="0.023777" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file://$(find redpanda_base)/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="chassis_material">
+        <color
+          rgba="1 0.2 0.2 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file://$(find redpanda_base)/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="chassis_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="chassis_link"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </joint>
+
+  <!-- ========================================== -->
+  <!-- LEFT WHEEL ASSEMBLY -->
+  <!-- ========================================== -->
+  <link
+    name="left_link">
+    <inertial>
+      <origin
+        xyz="9.1168E-17 4.5103E-17 -0.0011655"
+        rpy="0 0 0" />
+      <mass
+        value="0.1" />
+      <inertia
+        ixx="2.107E-05"
+        ixy="-2.076E-21"
+        ixz="7.6185E-22"
+        iyy="2.107E-05"
+        iyz="-2.5207E-21"
+        izz="3.6474E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file://$(find redpanda_base)/meshes/left_link.STL" />
+      </geometry>
+      <material
+        name="wheel_material">
+        <color
+          rgba="0.2 0.8 0.2 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file://$(find redpanda_base)/meshes/left_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="left_joint"
+    type="continuous">
+    <origin
+      xyz="0.0053219 0.111 -0.064"
+      rpy="-1.5708 0 0" />
+    <parent
+      link="chassis_link" />
+    <child
+      link="left_link" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+
+  <!-- ========================================== -->
+  <!-- RIGHT WHEEL ASSEMBLY -->
+  <!-- ========================================== -->
+  <link
+    name="right_link">
+    <inertial>
+      <origin
+        xyz="-2.5058E-19 3.4694E-18 0.0011655"
+        rpy="0 0 0" />
+      <mass
+        value="0.1" />
+      <inertia
+        ixx="2.107E-05"
+        ixy="4.5801E-23"
+        ixz="4.9702E-22"
+        iyy="2.107E-05"
+        iyz="2.0688E-22"
+        izz="3.6474E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file://$(find redpanda_base)/meshes/right_link.STL" />
+      </geometry>
+      <material
+        name="wheel_material">
+        <color
+          rgba="0.2 0.8 0.2 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file://$(find redpanda_base)/meshes/right_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="right_joint"
+    type="continuous">
+    <origin
+      xyz="0.0053219 -0.111 -0.064"
+      rpy="1.5708 0 0" />
+    <parent
+      link="chassis_link" />
+    <child
+      link="right_link" />
+    <axis
+      xyz="0 0 -1" />
+  </joint>
+
+  <!-- ========================================== -->
+  <!-- FRONT CASTER ASSEMBLY -->
+  <!-- ========================================== -->
+  <link
+    name="front_link">
+    <inertial>
+      <origin
+        xyz="0.0018285 -2.3064E-17 -0.0067942"
+        rpy="0 0 0" />
+      <mass
+        value="0.1" />
+      <inertia
+        ixx="1.3996E-07"
+        ixy="1.0188E-08"
+        ixz="2.9877E-08"
+        iyy="1.4735E-07"
+        iyz="-3.0127E-08"
+        izz="1.1813E-07" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file://$(find redpanda_base)/meshes/front_link.STL" />
+      </geometry>
+      <material
+        name="caster_material">
+        <color
+          rgba="1 0.8 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file://$(find redpanda_base)/meshes/front_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="front_joint"
+    type="continuous">
+    <origin
+      xyz="0.10232 0 -0.0635"
+      rpy="0 0 0" />
+    <parent
+      link="chassis_link" />
+    <child
+      link="front_link" />
+    <axis
+      xyz="0 0 -1" />
+  </joint>
+
+  <!-- Front Caster Wheel -->
+  <link
+    name="casterfront_link">
+    <inertial>
+      <origin
+        xyz="-1.3878E-17 4.3368E-19 -3.3126E-19"
+        rpy="0 0 0" />
+      <mass
+        value="0.1" />
+      <inertia
+        ixx="3.2243E-07"
+        ixy="-1.0157E-24"
+        ixz="4.6905E-22"
+        iyy="3.2243E-07"
+        iyz="3.8842E-24"
+        izz="4.7927E-07" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file://$(find redpanda_base)/meshes/casterfront_link.STL" />
+      </geometry>
+      <material
+        name="caster_wheel_material">
+        <color
+          rgba="1 1 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file://$(find redpanda_base)/meshes/casterfront_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="casterfront_joint"
+    type="continuous">
+    <origin
+      xyz="0.0074613898024572 0 -0.0205"
+      rpy="-1.5707963267949 0 0" />
+    <parent
+      link="front_link" />
+    <child
+      link="casterfront_link" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+
+  <!-- ========================================== -->
+  <!-- BACK CASTER ASSEMBLY -->
+  <!-- ========================================== -->
+  <link
+    name="back_link">
+    <inertial>
+      <origin
+        xyz="0.0018285 -4.4617E-17 -0.0067942"
+        rpy="0 0 0" />
+      <mass
+        value="0.1" />
+      <inertia
+        ixx="1.3996E-07"
+        ixy="1.0188E-08"
+        ixz="2.9877E-08"
+        iyy="1.4735E-07"
+        iyz="-3.0127E-08"
+        izz="1.1813E-07" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file://$(find redpanda_base)/meshes/back_link.STL" />
+      </geometry>
+      <material
+        name="caster_material">
+        <color
+          rgba="1 0.8 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file://$(find redpanda_base)/meshes/back_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="back_joint"
+    type="continuous">
+    <origin
+      xyz="-0.091678 0 -0.0635"
+      rpy="0 0 0" />
+    <parent
+      link="chassis_link" />
+    <child
+      link="back_link" />
+    <axis
+      xyz="0 0 -1" />
+  </joint>
+
+  <!-- Back Caster Wheel -->
+  <link
+    name="casterback_link">
+    <inertial>
+      <origin
+        xyz="1.3878E-17 0 -1.2284E-18"
+        rpy="0 0 0" />
+      <mass
+        value="0.1" />
+      <inertia
+        ixx="3.2243E-07"
+        ixy="3.3005E-24"
+        ixz="5.4151E-22"
+        iyy="3.2243E-07"
+        iyz="-4.9098E-23"
+        izz="4.7927E-07" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file://$(find redpanda_base)/meshes/casterback_link.STL" />
+      </geometry>
+      <material
+        name="caster_wheel_material">
+        <color
+          rgba="1 1 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file://$(find redpanda_base)/meshes/casterback_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="casterback_joint"
+    type="continuous">
+    <origin
+      xyz="0.0074614 0 -0.0205"
+      rpy="-1.5708 0 0" />
+    <parent
+      link="back_link" />
+    <child
+      link="casterback_link" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+
+  <!-- ========================================== -->
+  <!-- LIDAR SENSOR -->
+  <!-- ========================================== -->
+  <link
+    name="lidar_link">
+    <inertial>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <mass
+        value="0.1" />
+      <inertia
+        ixx="0"
+        ixy="0"
+        ixz="0"
+        iyy="0"
+        iyz="0"
+        izz="0" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file://$(find redpanda_base)/meshes/lidar_link.STL" />
+      </geometry>
+      <material
+        name="lidar_material">
+        <color
+          rgba="0.8 0.2 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file://$(find redpanda_base)/meshes/lidar_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="lidar_joint"
+    type="fixed">
+    <origin
+      xyz="0.10232 0 0.015021"
+      rpy="0 0 0" />
+    <parent
+      link="chassis_link" />
+    <child
+      link="lidar_link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+</robot>
